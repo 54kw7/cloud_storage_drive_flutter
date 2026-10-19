@@ -1,13 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
-import 'package:net_disk_flutter/pages/calendar.dart';
-import 'package:net_disk_flutter/pages/document.dart';
-import 'package:net_disk_flutter/pages/home.dart';
-import 'package:net_disk_flutter/pages/mail.dart';
-import 'package:net_disk_flutter/pages/order.dart';
-import 'package:net_disk_flutter/pages/root.dart';
-import 'package:net_disk_flutter/pages/setting.dart';
-import 'package:net_disk_flutter/pages/user.dart';
+import 'package:cloud_storage_drive_flutter/pages/document.dart';
+import 'package:cloud_storage_drive_flutter/pages/home.dart';
+import 'package:cloud_storage_drive_flutter/pages/root.dart';
+import 'package:cloud_storage_drive_flutter/pages/setting.dart';
+import 'package:cloud_storage_drive_flutter/pages/user.dart';
 
 final router = GoRouter(
   initialLocation: '/', // 初始化地址
@@ -52,21 +49,6 @@ final router = GoRouter(
           path: '/setting',
           name: 'setting',
           builder: (context, state) => SettingPage(),
-        ),
-        GoRoute(
-          path: '/order',
-          name: 'order',
-          builder: (context, state) => OrderPage(),
-        ),
-        GoRoute(
-          path: '/mail',
-          name: 'mail',
-          builder: (context, state) => MailPage(),
-        ),
-        GoRoute(
-          path: '/calendar',
-          name: 'calendar',
-          builder: (context, state) => CalendarPage(),
         ),
       ],
     ),

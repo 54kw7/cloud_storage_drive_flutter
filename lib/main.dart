@@ -1,6 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:net_disk_flutter/router/router.dart';
-import 'package:net_disk_flutter/services/tray.dart';
+import 'package:cloud_storage_drive_flutter/router/router.dart';
+import 'package:cloud_storage_drive_flutter/services/tray.dart';
 import 'package:window_manager/window_manager.dart';
 
 void main() async {
@@ -17,6 +17,8 @@ void main() async {
   );
 
   windowManager.waitUntilReadyToShow(windowOptions, () async {
+    // 同步原生窗口标题（任务栏悬停、Alt+Tab、任务管理器都会读它）
+    await windowManager.setTitle('Flutter 网盘');
     await windowManager.setResizable(true);
     await windowManager.show();
     await windowManager.focus();
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FluentApp.router(
-      title: 'Flutter Demo',
+      title: 'Flutter 网盘',
       debugShowCheckedModeBanner: false,
       theme: FluentThemeData(accentColor: Colors.blue),
       routerConfig: router,

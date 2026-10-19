@@ -20,10 +20,7 @@ class _RootPageState extends State<RootPage> {
     final location = GoRouterState.of(context).uri.path;
     if (location.startsWith('/document')) return 1;
     if (location.startsWith('/user')) return 2;
-    if (location.startsWith('/setting')) return 6;
-    if (location.startsWith('/order')) return 5;
-    if (location.startsWith('/mail')) return 3;
-    if (location.startsWith('/calendar')) return 4;
+    if (location.startsWith('/setting')) return 3;
     return 0;
   }
 
@@ -34,14 +31,8 @@ class _RootPageState extends State<RootPage> {
         context.go('/document?aid=10086');
       case 2:
         context.goNamed('user', pathParameters: {'uid': '1001'});
-      case 6:
-        context.goNamed('setting');
-      case 5:
-        context.goNamed('order');
       case 3:
-        context.goNamed('mail');
-      case 4:
-        context.goNamed('calendar');
+        context.goNamed('setting');
       default:
         context.go('/');
     }
@@ -80,6 +71,17 @@ class _RootPageState extends State<RootPage> {
         onChanged: (index) => _onItemPressed(context, index),
         displayMode: PaneDisplayMode.auto,
         items: [
+          PaneItemExpander(
+            icon: const Icon(FluentIcons.file_image),
+            title: const Text('文件'),
+            items: [
+              PaneItem(
+                icon: const Icon(FluentIcons.home),
+                title: const Text('首页'),
+                body: SizedBox.shrink(),
+              ),
+            ],
+          ),
           PaneItem(
             icon: const Icon(FluentIcons.home),
             title: const Text('首页'),
@@ -93,21 +95,6 @@ class _RootPageState extends State<RootPage> {
           PaneItem(
             icon: const Icon(FluentIcons.contact),
             title: const Text('用户'),
-            body: SizedBox.shrink(),
-          ),
-          PaneItem(
-            icon: const Icon(FluentIcons.mail),
-            title: const Text('邮箱'),
-            body: SizedBox.shrink(),
-          ),
-          PaneItem(
-            icon: const Icon(FluentIcons.calendar),
-            title: const Text('日历'),
-            body: SizedBox.shrink(),
-          ),
-          PaneItem(
-            icon: const Icon(FluentIcons.activate_orders),
-            title: const Text('订单'),
             body: SizedBox.shrink(),
           ),
           PaneItem(

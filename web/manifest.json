@@ -1,6 +1,6 @@
 {
-    "name": "net_disk_flutter",
-    "short_name": "net_disk_flutter",
+    "name": "cloud_storage_drive_flutter",
+    "short_name": "cloud_storage_drive_flutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,4 +1,4 @@
-package com.example.net_disk_flutter
+package com.example.cloud_storage_drive_flutter
 
 import io.flutter.embedding.android.FlutterActivity
 
