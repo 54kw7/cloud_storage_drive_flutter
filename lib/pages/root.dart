@@ -47,11 +47,24 @@ class _RootPageState extends State<RootPage> {
     }
   }
 
+  /// 标题栏里显示的 logo。
+  ///
+  /// 注意：这里必须用 png。
+  /// Flutter 的图片解码器支持 jpg/png/gif/webp/bmp，但不支持 .ico，
+  /// Image.asset('xxx.ico') 会抛 "Could not instantiate image codec"。
+  /// .ico 只留给托盘和原生窗口图标用。
+  static const String _logoPath = 'assets/images/tray.png';
+
   @override
   Widget build(BuildContext context) {
     return NavigationView(
       titleBar: TitleBar(
-        icon: const FlutterLogo(),
+        icon: Image.asset(
+          _logoPath,
+          width: 16,
+          height: 16,
+          filterQuality: FilterQuality.high,
+        ),
         title: const Text('Flutter 网盘'),
         // subtitle: const Text('Preview'),
         height: 40,

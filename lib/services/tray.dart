@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:net_disk_flutter/router/router.dart';
 import 'package:tray_manager/tray_manager.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -65,6 +66,21 @@ Future<void> initSystemTray() async {
 
   menu.addSeparator();
 
+  final settingPageItem = MenuItem.createWithLabelAndType(
+    '设置',
+    MenuItemType.normal,
+  )!;
+
+  settingPageItem.addListener((event) async {
+    if (event is MenuItemClickedEvent) {
+      await _showSettingWindow();
+    }
+  });
+
+  menu.addItem(settingPageItem);
+
+  menu.addSeparator();
+
   final exitItem = MenuItem.createWithLabelAndType('退出', MenuItemType.normal)!;
   exitItem.addListener((event) async {
     if (event is MenuItemClickedEvent) {
@@ -78,9 +94,15 @@ Future<void> initSystemTray() async {
 }
 
 /// 把主窗口叫回前台（最小化 / 隐藏状态下都能用）
-void _showMainWindow() {
-  windowManager.show();
-  windowManager.focus();
+Future<void> _showMainWindow() async {
+  await windowManager.show();
+  await windowManager.focus();
+}
+
+Future<void> _showSettingWindow() async {
+  await windowManager.show();
+  await windowManager.focus();
+  router.goNamed('setting');
 }
 
 /// 退出前销毁托盘图标，避免任务栏里残留「幽灵图标」
